@@ -2,7 +2,7 @@
 
 namespace lab2
 {
-    class Item
+    public class Item
     {
         public string Id { get; }
         public string Name { get; }

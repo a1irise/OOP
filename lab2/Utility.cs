@@ -2,7 +2,7 @@
 
 namespace lab2
 {
-    class Utility
+    public class Utility
     {
         private List<Shop> _shops = new List<Shop>();
 

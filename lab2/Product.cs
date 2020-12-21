@@ -1,6 +1,6 @@
 ﻿namespace lab2
 {
-    class Product
+    public class Product
     {
         public Item Item { get; }
         public int Amount { get; set; }
