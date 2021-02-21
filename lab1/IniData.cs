@@ -42,7 +42,7 @@ namespace lab1
         public string GetString(string entryName, string sectionName = "default")
         {
             if (!TryGetString(out string result, entryName, sectionName))
-                throw new Exception($"Unable to find {entryName} in {sectionName}.");
+                throw new EntryNotFoundException(entryName, sectionName);
             return result;
         }
 
@@ -67,9 +67,9 @@ namespace lab1
             if (!TryGetInt(out int result, entryName, sectionName))
             {
                 if (result == 0)
-                    throw new Exception($"Unable to find {entryName} in {sectionName}.");
+                    throw new EntryNotFoundException(entryName, sectionName);
                 if (result == -1)
-                    throw new Exception($"Unable to convert value of {entryName} in {sectionName} to int.");
+                    throw new InvalidCastException(entryName, sectionName, "int");
             }
             return result;
         }
@@ -94,9 +94,9 @@ namespace lab1
             if (!TryGetDouble(out double result, entryName, sectionName))
             {
                 if (result == 0)
-                    throw new Exception($"Unable to find {entryName} in {sectionName}.");
+                    throw new EntryNotFoundException(entryName, sectionName);
                 if (result == -1)
-                    throw new Exception($"Unable to convert value of {entryName} in {sectionName} to double.");
+                    throw new InvalidCastException(entryName, sectionName, "double");
             }
             return result;
         }

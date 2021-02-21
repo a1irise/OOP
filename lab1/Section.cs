@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System;
 
 namespace lab1
 {
@@ -17,8 +16,7 @@ namespace lab1
         public void AddEntry(string str)
         {
             if (str.IndexOf('=') == -1 || str.Remove(str.IndexOf('=')) == "" || str.Substring(str.IndexOf('=') + 1) == "")
-                throw new Exception($"{str} is invalid");
-
+                throw new InvalidEntryFormatException(str);
             string name = str.Remove(str.IndexOf('=')).ToLower();
             string value = str.Substring(str.IndexOf('=') + 1).ToLower();
 

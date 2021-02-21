@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\lab6.BLL\lab6.BLL.csproj" />
+    <ProjectReference Include="..\lab6.DAL\lab6.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

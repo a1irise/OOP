@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace lab1
@@ -9,26 +8,10 @@ namespace lab1
         public IniData Parse(string file)
         {
             if (!File.Exists(file))
-                throw new Exception($"{file} does not exist.");
+                throw new FileNotFoundException(file);
             if (file.Substring(file.Length - 4) != ".ini")
-                throw new Exception($"{file.Substring(file.Length - 4)} is not a supported file extension.");
-            
-            var data = new IniData();
+                throw new UnsupportedFileExtensionException();
 
-            try
-            {
-                data = GetData(file);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return data;
-        }
-
-        private IniData GetData(string file)
-        {
             var data = new IniData();
 
             var lines = FormatFile(file);
@@ -63,14 +46,9 @@ namespace lab1
                 if (lines[i] == string.Empty)
                     lines[i] = "delete marker";
             }
-            lines.RemoveAll(IsMarked);
+            lines.RemoveAll(s => s == "delete marker");
 
             return lines;
-        }
-
-        private bool IsMarked(string str)
-        {
-            return str == "delete marker";
         }
     }
 }
